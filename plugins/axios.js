@@ -9,6 +9,8 @@ export default function ({ $axios, redirect, store, app, $cookies }) {
     
   })
 
+  //
+
   var isRefreshing = false;
   var refreshSubscribers = [];
   var i = 0;
@@ -26,7 +28,7 @@ export default function ({ $axios, redirect, store, app, $cookies }) {
       // if(error.response && error.response.data && error.response.data.errors && error.response.data.errors.invalidRefreshToken && error.response.data.errors.invalidRefreshToken === true){
       //   console.log("entroo")  
       //   // store.commit('logout')
-      //     // redirect('/login')
+      //     // redirect('/login') 
       // }
       if(error.response.config.url == 'api/login') {
         return Promise.reject(error)
