@@ -68,4 +68,7 @@ export default {
   .van-radio__icon--checked .van-icon{
     border-color: #41ca85;
   }
+  .van-notice-bar__content{
+    color: #ffffff !important;
+  }
 </style>
