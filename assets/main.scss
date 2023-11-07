@@ -1,0 +1,290 @@
+
+*::-webkit-scrollbar  {
+  display: none !important;
+}
+
+
+//spacing
+$marginKey: "m";
+$paddingKey: "p";
+$spacer: 1;
+$sizeUnit: rem;
+$separator: "-";
+$sizes: (
+  ("0", 0),
+  ("auto", auto),
+  ("1", $spacer * 0.25),
+  ("2", $spacer * 0.5),
+  ("3", $spacer),
+  ("4", $spacer * 1.5),
+  ("5", $spacer * 3),
+  ("6", $spacer * 5),
+  ("7", $spacer * 10),
+);
+$positions: (
+  ("t", "top"),
+  ("r", "right"),
+  ("b", "bottom"),
+  ("l", "left"),
+  ("x", "x"),
+  ("y", "y"),
+  ("a", "a")
+);
+
+@function sizeValue($key, $value) {
+  @if ($key == "0") {
+    @return 0;
+  } @else if ($key == "auto") {
+    @return auto;
+  } @else {
+    @return $value + $sizeUnit;
+  }
+}
+
+@each $size in $sizes {
+  $sizeKey: nth($size, 1);
+  $sizeValue: nth($size, 2);
+  .#{$marginKey}#{$separator}#{$sizeKey} {
+    margin: sizeValue($sizeKey, $sizeValue);
+  }
+  .#{$paddingKey}#{$separator}#{$sizeKey} {
+    padding: sizeValue($sizeKey, $sizeValue);
+  }
+  @each $position in $positions {
+    $posKey: nth($position, 1);
+    $posValue: nth($position, 2);
+    .#{$marginKey}#{$posKey}#{$separator}#{$sizeKey} {
+      @if $posValue == "x" {
+        margin-left: sizeValue($sizeKey, $sizeValue);
+        margin-right: sizeValue($sizeKey, $sizeValue);
+      } @else if $posValue == "y" {
+        margin-top: sizeValue($sizeKey, $sizeValue);
+        margin-bottom: sizeValue($sizeKey, $sizeValue);
+      } @else if $posValue == "a" {
+        margin-top: sizeValue($sizeKey, $sizeValue);
+        margin-bottom: sizeValue($sizeKey, $sizeValue);
+        margin-left: sizeValue($sizeKey, $sizeValue);
+        margin-right: sizeValue($sizeKey, $sizeValue);        
+      } @else {
+        margin-#{$posValue}: sizeValue($sizeKey, $sizeValue);
+      }
+    }
+    .#{$paddingKey}#{$posKey}#{$separator}#{$sizeKey} {
+      @if $posValue == "x" {
+        padding-left: sizeValue($sizeKey, $sizeValue);
+        padding-right: sizeValue($sizeKey, $sizeValue);
+      } @else if $posValue == "y" {
+        padding-top: sizeValue($sizeKey, $sizeValue);
+        padding-bottom: sizeValue($sizeKey, $sizeValue);
+      } @else if $posValue == "a" {
+        padding-top: sizeValue($sizeKey, $sizeValue);
+        padding-bottom: sizeValue($sizeKey, $sizeValue);
+        padding-left: sizeValue($sizeKey, $sizeValue);
+        padding-right: sizeValue($sizeKey, $sizeValue);        
+      } @else {
+        padding-#{$posValue}: sizeValue($sizeKey, $sizeValue);
+      }
+    }
+  }
+}
+
+@function sizeValue($key, $value) {
+  @if ($key == "0") {
+    @return 0 + " " + !important;
+  } @else if ($key == "auto") {
+    @return auto + " " + !important;
+  } @else {
+    @return $value + $sizeUnit + " " + !important;
+  }
+}
+//end spacing
+
+.center {
+  text-align: center;
+}
+
+.custom-card {
+  border-radius: 15px;
+  margin-left: 20px;
+  min-width: 290px;
+}
+
+.scroll-h {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap
+
+}
+
+.custom-card.van-card {
+  min-height: 250px !important;
+}
+
+.custom-card.van-card:not(:first-child) {
+  margin-top: 0px !important;
+}
+
+
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.card {
+  margin-bottom: 24px;
+  padding: 16px 20px 16px 20px;
+  background-color: #fff;
+  box-shadow: 2px 4px 9px rgba(0,0,0,0.1);
+  border-radius: 35px;
+}
+
+.title-1 {
+  // margin: 5px 10px;
+  color: rgb(68, 68, 68);
+}
+
+h5, h4, h4 {
+  font-weight: 600;
+}
+
+
+
+
+//GIUSEPPE
+
+//APP STYLE 
+
+
+.app-page{
+  width: 100%;
+  background-color: #f8f9fa;
+}
+.app-wrapper{
+  background-color: #f8f9fa;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  //height: calc(100vh - 10px);
+  //background: #009fe2;
+}
+
+
+//CELLE
+
+.search{
+  margin-left: -12px;
+  color: rgb(68, 68, 68);
+}
+
+.title{
+  font-size: 1.3rem !important;
+  font-weight: bold;
+  color: #41ca85 !important;
+}
+
+.title-2{
+  font-size: 1.0rem !important;
+  font-weight: 650;
+  color: #41ca85 !important;
+}
+
+.subtitle{
+  font-size: 1rem;
+  font-weight: 300;
+  color: #41ca85 !important;
+}
+
+.subtitle-2{
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 500;
+  color: #009fe2 !important;
+}
+
+.body-12 {
+  font-size: 12pt !important;
+  font-weight: 100;
+  color: #41ca85 !important;
+  line-height: 1.3;
+}
+.centered{
+  justify-content: center;
+  text-align: center;
+}
+
+
+.app-page::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.app-page {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+
+.van-search__content {
+  padding-left: 0px;
+}
+
+.van-search {
+  padding: 5px 16px;
+
+}
+
+.van-search .van-cell {
+  padding: 0px;
+
+}
+
+.van-search__action {
+
+  color: #009fe2;
+
+}
+.ads-image {
+  padding: 0px 10px 0px 10px;
+}
+
+.page-content {
+  padding-top: 15px !important;
+}
+
+h2, h3, h1 {
+margin:0px;
+}
+
+
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all 1s ease;
+}
+.slide-fade-leave-active {
+  transition: all .9s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}

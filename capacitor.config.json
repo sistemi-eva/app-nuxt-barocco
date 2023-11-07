@@ -1,0 +1,8 @@
+{
+  "appId": "com.barocco.app",
+  "appName": "barocco",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

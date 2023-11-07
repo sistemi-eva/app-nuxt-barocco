@@ -1,0 +1,11 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.uniongasmetano.app",
+      "sha256_cert_fingerprints": [
+        "E4:1A:3A:BD:34:62:4D:18:65:0D:15:04:5E:8A:E9:43:14:0C:B0:61:D4:67:54:8A:C9:05:B4:0C:D4:2F:18:AB"
+      ]
+    }
+  }]
+  
