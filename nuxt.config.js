@@ -87,8 +87,8 @@ export default {
       fileName: 'app-icon.png',
     },
     manifest: {
-      name: 'Union Gas e Luce',
-      short_name: 'Union',
+      name: 'App Barocco',
+      short_name: 'Barocco',
       description: "L'App per gestire le tue utenze gas e luce",
       lang: 'it',
       useWebmanifestExtension: false
