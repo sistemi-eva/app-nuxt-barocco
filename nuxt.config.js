@@ -41,10 +41,10 @@ export default {
 
       ['nuxt-twa-module', {
         /* module options */
-        defaultUrl: 'https://app.uniongaseluce.it',
-        hostName: 'app.uniongaseluce.it',
-        applicationId: 'com.uniongasmetano.app',
-        launcherName: 'Union Gas e Luce',
+        defaultUrl: 'https://appbarocco.evaenergyservice.it',
+        hostName: 'appbarocco.evaenergyservice.it',
+        applicationId: 'com.baroccolucegas.app',
+        launcherName: 'Barocco Luce e Gas',
         versionCode: 10305,
         versionName: '1.3.5',
         statusBarColor: '#009fe2',

@@ -1,5 +1,5 @@
 <template>
- <van-tabs :style="{'--bkgImage':height+'px'}" v-model="active" :before-change="beforeChange" >
+  <van-tabs :style="{'--bkgImage':height+'px'}" v-model="active" :before-change="beforeChange" >
     <van-tab title="Fatture" name=fatture class="tab-section">
       <template #default >
         <transition appear name="slide-fade">
