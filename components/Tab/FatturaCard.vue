@@ -16,9 +16,11 @@
         <h2 class="fattura-item textDefault" >{{fattura.importo | currency}} </h2>
         <h5 class="fattura-item" :style="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata' ? 'color:red': 'color:green'">{{fattura.statoPagamento}}</h5>
       <div class="fattura-item-right-bottom">
+        <van-button icon="paid" v-if="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata'" type="danger" round size="small" :loading="payment" @click="paga(fattura.idfattura)">Paga</van-button>  
         <van-button icon="down" size="small" type="info" round @click="downloadFattura(fattura.idfattura, fattura.numeroFattura)" :loading="downloading" loading-type="spinner">PDF </van-button>
-        <van-button icon="paid" v-if="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata'" type="danger" round size="small" :loading="payment" @click="paga(fattura.idfattura)">Paga</van-button>
+        <van-button icon="down" size="small" type="info" round @click="downloadFatturaDETT(fattura.idfattura, fattura.numeroFattura)" :loading="downloading2" loading-type="spinner">DETT</van-button>
       </div>
+
     </div>
   </div>
 </template>
@@ -39,6 +41,7 @@ data() {
   return {
     show:false,
     downloading: false,
+    downloading2: false,
     payment: false
   }
 },
@@ -103,23 +106,206 @@ data() {
     });
     },
 
+    async isPdfUrl(url) {
+        try {
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`Errore nella richiesta: ${response.status} ${response.statusText}`);
+          }
+
+          const responseBody = await response.text();
+          var rjson = JSON.parse(responseBody)
+          return rjson.name;
+        } catch (error) {
+          console.error(`Si è verificato un errore: ${error.message}`);
+          return null;
+        }
+    },
+
+
     async downloadFattura(id) {
       this.downloading = true
       this.$axios.$get('/api/authorization/auth-operation-token?operationType=downloadfattura&operationData='+id)
-      .then((data)=>{
+      .then(async (data)=>{
         let url = 'https://areaclientiback.evaenergyservice.it/bolletta?url=https://areaclienti.uniongaseluce.it/ubik/api/fattura/pdf?permissionToken='+data.access_token+'&dettaglio=false'
-          if(!navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPod/i) && !navigator.userAgent.match(/iPad/i)){
+        this.downloading = false
+        //return this.myBlob(url, "bolletta.pdf")
+        
+         
+        var ispdf = await this.isPdfUrl(url)
+        if( ispdf == "Error" ){
+          
+          return this.$dialog.alert({
+            message: 'La fattura è in fase di contabilizzazione. Il PDF sarà disponibile a breve per il download.',
+            confirmButtonText: 'Chiudi',
+            closeOnClickOverlay: true
+          })
+
+        }
+
+        console.log(data)
+        if(!navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPod/i) && !navigator.userAgent.match(/iPad/i)){
             this.showNotify()
             window.location.href =url
           }
           else{
-          window.open('https://areaclienti.uniongaseluce.it/ubik/api/fattura/pdf?permissionToken='+data.access_token+'&dettaglio=false','_self')
+          window.open(url,'_self')
           }
-      this.downloading = false
+          
+     
       }).catch((e)=> {
         console.log(e)
         this.$dialog.alert({
-          message: 'Fattura PDF al momento non disponibile',
+          message: 'La fattura è in fase di contabilizzazione. Il PDF sarà disponibile a breve per il download.',
+          confirmButtonText: 'Chiudi',
+          closeOnClickOverlay: true
+        })
+      })
+    },
+
+    async myBlob(url, filename){
+
+      const anchorElement = document.createElement('a');
+
+      document.body.appendChild(anchorElement);
+
+      anchorElement.style.display = 'none';
+
+      var self = this;
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'blob';
+
+      xhr.onload = function(e) {
+        if (this.status == 200) {
+          // Note: .response instead of .responseText
+
+
+          
+          var out;
+
+            try {
+                out = new Blob([this.response], {type: 'application/pdf'});
+                //alert("ok")
+
+            }
+            catch (e) {
+                window.BlobBuilder = window.BlobBuilder ||
+                        window.WebKitBlobBuilder ||
+                        window.MozBlobBuilder ||
+                        window.MSBlobBuilder;
+
+                if (e.name == 'TypeError' && window.BlobBuilder) {
+                    var bb = new BlobBuilder();
+                    bb.append(this.response);
+                    out = bb.getBlob("application/pdf");
+                    //alert("case 2");
+                }
+                else if (e.name == "InvalidStateError") {
+                    // InvalidStateError (tested on FF13 WinXP)
+                    out = new Blob([this.response], {type: "application/pdf"});
+                    //alert("case 3");
+                }
+                else {
+                    // We're screwed, blob constructor unsupported entirely   
+                    //alert("Errore");
+                }
+            }
+
+
+
+
+            var blob = out;
+
+
+
+
+
+
+
+
+
+
+          //var blob = new Blob([this.response], {type: 'application/pdf'}),
+          var myurl = window.URL.createObjectURL(blob);
+          
+          console.log(blob)
+          if (blob.size == 0) {
+            return this.$dialog.alert({
+              message: 'La fattura è in fase di contabilizzazione. Il PDF sarà disponibile a breve per il download.',
+              confirmButtonText: 'Chiudi',
+              closeOnClickOverlay: true
+            })
+
+          }
+
+
+          if(!navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPod/i) && !navigator.userAgent.match(/iPad/i)){
+            self.showNotify()
+            window.location.href =myurl
+          }
+          else{
+          window.open(myurl,'_self')
+        
+          }
+
+          /*anchorElement.href = myurl;
+          anchorElement.download = filename;
+          anchorElement.click();
+          */
+          //window.URL.revokeObjectURL(myurl);
+        }
+        else{
+          return this.$dialog.alert({
+              message: 'Fattura PDF al momento non disponibile',
+              confirmButtonText: 'Chiudi',
+              closeOnClickOverlay: true
+            })
+        }
+      };
+
+      xhr.send();
+    },
+
+
+    async downloadFatturaDETT(id) {
+      this.downloading2 = true
+      this.$axios.$get('/api/authorization/auth-operation-token?operationType=downloadfattura&operationData='+id)
+      .then(async (data)=>{
+        let url = 'https://areaclientiback.evaenergyservice.it/bolletta_dett?url=https://areaclienti.uniongaseluce.it/ubik/api/fattura/pdf?permissionToken='+data.access_token
+
+        this.downloading2 = false
+        //return this.myBlob(url, "bolletta_dett.pdf")
+
+        var ispdf = await this.isPdfUrl(url)
+        if( ispdf == "Error" ){
+          
+          return this.$dialog.alert({
+            message: 'La fattura è in fase di contabilizzazione. Il PDF sarà disponibile a breve per il download.',
+            confirmButtonText: 'Chiudi',
+            closeOnClickOverlay: true
+          })
+
+        }
+        
+        console.log(data)
+        if(!navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPod/i) && !navigator.userAgent.match(/iPad/i)){
+            this.showNotify()
+            window.location.href =url
+          }
+          else{
+          window.open(url,'_self')
+        
+        }
+
+        
+      
+      }).catch((e)=> {
+        console.log(e)
+        this.$dialog.alert({
+          message: 'La fattura è in fase di contabilizzazione. Il PDF sarà disponibile a breve per il download.',
           confirmButtonText: 'Chiudi',
           closeOnClickOverlay: true
         })
@@ -141,7 +327,7 @@ data() {
     border-radius: 10px;
   }
 .fattura{
-  margin : 10px;
+  margin : 10px 0 10px 0;
   padding:15px;
   justify-content: space-between;
   display: flex;
@@ -169,5 +355,12 @@ text-align: right;
 .fattura-item-right-bottom{
 text-align: right;
 }
+
+.van-button--small {
+    height: 32px;
+    padding: 0px 4px;
+    font-size: 11px;
+}
+
 
 </style>
