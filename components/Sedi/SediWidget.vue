@@ -68,6 +68,7 @@ export default {
     async fetchData() {
       this.loading = true
       let nomeCompleto = ''
+      var idsediok = []
       await this.$axios.$post('graphql/batch', 
           [
             {
@@ -82,33 +83,54 @@ export default {
           if(tempAnagrafica.nome && tempAnagrafica.cognome) {
             nomeCompleto = tempAnagrafica.cognome + ' ' + tempAnagrafica.nome
           }else if(tempAnagrafica.ragSoc) nomeCompleto = tempAnagrafica.ragSoc
+
+          /*
           await this.$axios.$post('graphql/batch', 
             [
               {
                 operationName: '', 
-                query: `{ contratti(idanagrafica: ["${this.idAnagrafica}"])  { idrigaContratto,idsede,macroStato,__typename,idanagrafica }}`, 
+                query: `{ stickerTypes(objectTypeCodes: [1]) {bitFlagHex    sticker    entity    __typename  }}`, 
+                variables: {} 
+              }
+            ]
+            )
+            */
+
+          await this.$axios.$post('graphql/batch', 
+            [
+              {
+                operationName: '', 
+                query: `{ contratti(idanagrafica: ["${this.idAnagrafica}"] )  { bitMask, idrigaContratto, idsede,macroStato,__typename,idanagrafica }}`, 
                 variables: {} 
               }
             ]
             ).then(
             async ( data ) => {
               let contratti = data[0] && data[0].data && data[0].data.contratti ? data[0].data.contratti : [] 
+              
+              for (var i in contratti){
+                if(contratti[i].bitMask == this.$cookies.get("bitmask")){
+                  idsediok.push(contratti[i].idsede)
+                }
+              }
+
               await this.$axios.$post('graphql/batch', 
               [
                 {
                   operationName: '', 
-                  query: `{ sedi(idanagrafica: ["${this.idAnagrafica}"], idtipiSede: "5,6")  { idsede,idtipiSede,idanagrafica,idtipiSede,cap,civico,descrizioneSede,indirizzo,localita,tipiSede,telefono,__typename }}`, 
+                  query: `{ sedi(idanagrafica: ["${this.idAnagrafica}"], idtipiSede: "5,6")  { idsede, bitMask, idtipiSede,idanagrafica,idtipiSede,cap,civico,descrizioneSede,indirizzo,localita,tipiSede,telefono,__typename }}`, 
                   variables: {} 
                 }
               ]
             )
             .then(
               async ( data ) => {
+      
                 this.items = data[0] && data[0].data && data[0].data.sedi ? data[0].data.sedi : [] 
                 this.items = this.items.filter((el)=> {
                   for(let i in contratti){
                     if(el.idsede === contratti[i].idsede && contratti[i].macroStato != 'ANNULLATO') {
-                      if(el.idtipiSede.split(',').includes('5') || el.idtipiSede.split(',').includes('6')) return true
+                      if( ( el.idtipiSede.split(',').includes('5') || el.idtipiSede.split(',').includes('6') ) && idsediok.includes(el.idsede) ) return true
                       else return false
                     }
                   }
@@ -125,7 +147,7 @@ export default {
                     [
                       {
                         operationName: '', 
-                        query: `{ fatture(idanagrafica: ["${this.idAnagrafica}"], idSedi: [${sede.idsede}], statoPagamento: ["Non Pagata"])  { saldo ,__typename }}`, 
+                        query: `{ fatture(idanagrafica: ["${this.idAnagrafica}"], idSedi: [${sede.idsede}], bitMask: "${this.$cookies.get('bitmask')}", statoPagamento: ["Non Pagata"])  { saldo ,__typename }}`, 
                         variables: {} 
                       }
                     ]

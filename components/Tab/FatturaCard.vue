@@ -144,7 +144,6 @@ data() {
 
         }
 
-        console.log(data)
         if(!navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPod/i) && !navigator.userAgent.match(/iPad/i)){
             this.showNotify()
             window.location.href =url

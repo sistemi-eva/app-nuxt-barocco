@@ -543,9 +543,11 @@ export default {
           res.data.fingerprint = fingerprint;
           this.loadingLogin = false
           this.$store.commit("login", res.data);
+          this.$cookies.set("bitmask", "257");
           this.$axios.$get("api/user/info").then(user => {
             this.$store.commit('idAnagrafica',user.userInfo.idAnagrafica)
             this.$store.commit("utente", user);
+            
             this.$router.push("/");
           });
         })

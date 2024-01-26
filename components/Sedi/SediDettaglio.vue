@@ -114,7 +114,7 @@ export default {
         [
           {
             operationName: '', 
-            query: `{ contratti(idanagrafica: ["${this.idAnagrafica}"],idsede:${this.sede.idsede}) { idrigaContratto}}`, 
+            query: `{ contratti(idanagrafica: ["${this.idAnagrafica}"],idsede:${this.sede.idsede} ") { idrigaContratto}}`, 
             variables: {} 
           }
         ]
