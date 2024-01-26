@@ -118,7 +118,7 @@ export default {
               [
                 {
                   operationName: '', 
-                  query: `{ sedi(idanagrafica: ["${this.idAnagrafica}"], idtipiSede: "5,6")  { idsede, bitMask, idtipiSede,idanagrafica,idtipiSede,cap,civico,descrizioneSede,indirizzo,localita,tipiSede,telefono,__typename }}`, 
+                  query: `{ sedi(idanagrafica: ["${this.idAnagrafica}"], idtipiSede: "5,6")  { idsede, idtipiSede,idanagrafica,idtipiSede,cap,civico,descrizioneSede,indirizzo,localita,tipiSede,telefono,__typename }}`, 
                   variables: {} 
                 }
               ]
