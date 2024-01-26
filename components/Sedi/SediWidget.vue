@@ -147,7 +147,7 @@ export default {
                     [
                       {
                         operationName: '', 
-                        query: `{ fatture(idanagrafica: ["${this.idAnagrafica}"], idSedi: [${sede.idsede}], bitMask: "${this.$cookies.get('bitmask')}", statoPagamento: ["Non Pagata"])  { saldo ,__typename }}`, 
+                        query: `{ fatture(idanagrafica: ["${this.idAnagrafica}"], idSedi: [${sede.idsede}], statoPagamento: ["Non Pagata"])  { saldo ,__typename }}`, 
                         variables: {} 
                       }
                     ]
