@@ -37,6 +37,7 @@
   <van-field v-if="errors.password_old" :error-message="errors.password_old ? 'La password non è valida': ''" />
 
   <VueInputUi v-model="form.password_new" :type="changeTypePassword"  required class="mt-3" color="#009fe2" label="Nuova Password"/>
+  <van-field v-if="errors.password_new_retype" :error-message="errors.password_new_retype ? 'La password non è valida': ''" />  
   <VueInputUi v-model="form.password_new_retype" type="password" :error="errors.password_new_retype" required color="#009fe2" label="Ridigita La nuova Password"/>
   <van-icon class="icon" v-if="changeTypePassword=='password'"  name="eye-o" @click="changeTypePassword = 'text'" />
   <van-icon class="icon" v-else  name="closed-eye" @click="changeTypePassword = 'password'" />

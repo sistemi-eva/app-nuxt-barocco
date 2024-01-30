@@ -14,7 +14,7 @@
   </van-row>
   </div>
   <div>
-    <van-notice-bar v-if="sede.idtipiSede && sede.idtipiSede.split(',').includes('5')" text="Attualmente non è possibile comunicare la lettura del contatore." left-icon="volume-o" />
+    <!--<van-notice-bar v-if="sede.idtipiSede && sede.idtipiSede.split(',').includes('5')" text="Attualmente non è possibile comunicare la lettura del contatore." left-icon="volume-o" />-->
     <van-notice-bar v-if="sede.idtipiSede && sede.idtipiSede.split(',').includes('6') && !lettureZone" text="E' possibile comunicare la lettura ogni mese dal 23 a fine mese" left-icon="volume-o" />
     <van-notice-bar color="#1989fa" background="#ecf9ff" v-else-if="sede.idtipiSede && sede.idtipiSede.split(',').includes('6') && lettureZone" style="cursor: pointer;" @click="setLettura()"  mode="link" left-icon="chart-trending-o" >
     <template #default>
