@@ -84,10 +84,14 @@
 
 <script>
 import moment from 'moment'
+import TicketCard from './TicketCard.vue'
 
 
 import { mapGetters } from 'vuex'
 export default {
+  components: {
+    TicketCard
+  },
   data() {
     return {
       currentPage: 1,
@@ -195,6 +199,7 @@ export default {
       .then(
         ( data ) => {
           this.items = data[0] && data[0].data && data[0].data.tickets ? data[0].data.tickets : [] 
+
           this.loading = false
 
         }

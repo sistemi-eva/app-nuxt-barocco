@@ -54,6 +54,7 @@ props:{
     }
   },
   async mounted(){
+
     this.$axios.$get(`api/v2/tickets/${this.ticket.idreclamo}?idAnagrafica=${this.ticket.idAnagrafica}&applicationId=${this.ticket.applicationID}`).then((data)=>{
       this.ticketDetail = data.data.reclamoResourceWithConfig.reclamo
     }).catch((e)=> {

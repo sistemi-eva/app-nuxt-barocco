@@ -35,7 +35,9 @@
 <van-cell class="cell title" title="Modifica Password"></van-cell>
   <VueInputUi v-model="form.password" type="password" :error="errors.password_old" required color="#009fe2" label="Password attuale"/>
   <van-field v-if="errors.password_old" :error-message="errors.password_old ? 'La password non è valida': ''" />
+
   <VueInputUi v-model="form.password_new" :type="changeTypePassword"  required class="mt-3" color="#009fe2" label="Nuova Password"/>
+  <VueInputUi v-model="form.password_new_retype" type="password" :error="errors.password_new_retype" required color="#009fe2" label="Ridigita La nuova Password"/>
   <van-icon class="icon" v-if="changeTypePassword=='password'"  name="eye-o" @click="changeTypePassword = 'text'" />
   <van-icon class="icon" v-else  name="closed-eye" @click="changeTypePassword = 'password'" />
   <van-field v-if="errors.password_new" :error-message="errors.password_new? 'Usa almeno 8 caratteri. Includi almeno un numero, una lettera minuscola, una lettera maiuscola e un carattere speciale.': ''" />
@@ -137,6 +139,7 @@ export default {
         telefono1: false,
         password_old: false,
         password_new: false,
+        password_new_retype: false,
         waitTime: false,
         notOkPassword: false
       }
@@ -222,6 +225,10 @@ export default {
 
     updatePassword() {
 
+      if( this.form.password_new != this.form.password_new_retype){
+        return this.$toast.fail('Le password non coincidono');
+
+      }
 
         this.$axios.post('/api/change-password', 
           {

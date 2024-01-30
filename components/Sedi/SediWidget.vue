@@ -84,18 +84,6 @@ export default {
             nomeCompleto = tempAnagrafica.cognome + ' ' + tempAnagrafica.nome
           }else if(tempAnagrafica.ragSoc) nomeCompleto = tempAnagrafica.ragSoc
 
-          /*
-          await this.$axios.$post('graphql/batch', 
-            [
-              {
-                operationName: '', 
-                query: `{ stickerTypes(objectTypeCodes: [1]) {bitFlagHex    sticker    entity    __typename  }}`, 
-                variables: {} 
-              }
-            ]
-            )
-            */
-
           await this.$axios.$post('graphql/batch', 
             [
               {
