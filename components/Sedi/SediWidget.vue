@@ -19,7 +19,7 @@
 
       <div v-if="!loading">
 
-          <van-empty v-if="!filtraSedi.length" description="Nessun sito trovato" />
+          <van-empty v-if="!filtraSedi.length" description="Nessuna fornitura trovata" />
           <van-swipe :loop="false" class="sites-swipe  mt-3 mb-4" :width="290" >
             <template #indicator>
               <div></div>
