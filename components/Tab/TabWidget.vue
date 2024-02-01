@@ -82,7 +82,7 @@ export default {
                 [
                   {
                     operationName: '', 
-                    query: `{ fatture(idanagrafica: ["${this.sede.idanagrafica}"], idSedi: [${this.sede.idsede}], bitMask: "${this.$cookies.get('bitmask')}")  {idfattura, statoPagamento,pagamentoOnlineAbilitato,cardToken,creditCard,cardStatusMask,codUtility,dataScadenza,dataPagamento,numeroDoc,numeroFattura,dataEmissione,importo,saldo,hasPdftestata,hasPdfdettaglio,compDal,compAl,__typename}}`, 
+                    query: `{ fatture(idanagrafica: ["${this.sede.idanagrafica}"], idSedi: [${this.sede.idsede}])  {idfattura, statoPagamento,pagamentoOnlineAbilitato,cardToken,creditCard,cardStatusMask,codUtility,dataScadenza,dataPagamento,numeroDoc,numeroFattura,dataEmissione,importo,saldo,hasPdftestata,hasPdfdettaglio,compDal,compAl,__typename}}`, 
                     variables: {} 
                   }
                 ]
