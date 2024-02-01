@@ -260,19 +260,19 @@ export default {
 
   .van-pagination__item--active {
     color: #fff;
-    background-color: #41ca85 !important;
+    background-color: #63B32E !important;
 
 }
 
 .van-pagination__item--disabled, .van-pagination__item--disabled:active {
-    color: #41ca85;
+    color: #63B32E;
     background-color: #f7f8fa;
     cursor: not-allowed;
     opacity: 0.5;
 }
 
 .van-swipe__indicator--active {
-    background-color: #41ca85;
+    background-color: #63B32E;
     opacity: 1;
 }
 

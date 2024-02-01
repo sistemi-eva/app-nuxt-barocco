@@ -169,7 +169,7 @@ export default {
   border-width: 1.5px;
   border-radius: 5px;
   border-style:solid;
-  border-color: #41ca85 !important;
+  border-color: #63B32E !important;
   font-weight: 300;
   color: black;
 }
@@ -193,7 +193,7 @@ export default {
     padding: 15px;
     padding-top: 0px;
     position: relative;
-    background-color: #41ca85;
+    background-color: #63B32E;
 }
 
 .title{

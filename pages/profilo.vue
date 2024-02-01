@@ -10,7 +10,7 @@
 
   <van-cell class="cell title" title="Recapiti"></van-cell>
   <VueInputUi v-model="form.email" required type="email" color="#009fe2" label="E-mail"/>
-  <VuePhoneNumberInput color="#009fe2" valid-color="#41ca85" class="mt-3" v-model="form.cellulare" :error="errors.cellulare" :translations="{
+  <VuePhoneNumberInput color="#009fe2" valid-color="#63B32E" class="mt-3" v-model="form.cellulare" :error="errors.cellulare" :translations="{
     countrySelectorLabel: 'Prefisso',
     countrySelectorError: 'Scegli un paese',
     phoneNumberLabel: 'Cellulare',
@@ -18,7 +18,7 @@
   }" @update="changeCellulare" />
   <van-field v-if="errors.cellulare" :error-message="errors.cellulare ? 'Formato non corretto': ''" />
 
-  <VuePhoneNumberInput color="#009fe2" valid-color="#41ca85" v-model="form.telefono1" class="mt-3" :error="errors.telefono1"  :translations="{
+  <VuePhoneNumberInput color="#009fe2" valid-color="#63B32E" v-model="form.telefono1" class="mt-3" :error="errors.telefono1"  :translations="{
     countrySelectorLabel: 'Prefisso',
     countrySelectorError: 'Scegli un paese',
     phoneNumberLabel: 'Telefono fisso',
@@ -263,7 +263,7 @@ export default {
 
 .profilo .van-radio__label {
     margin-left: 8px;
-    color: #41ca85;
+    color: #63B32E;
     line-height: 20px;
 }
 .icon { 
@@ -274,7 +274,7 @@ export default {
   z-index: 2;
   min-width: 40px;
   font-size: 1.5rem;
-  color: #41ca85;
+  color: #63B32E;
   right: 0px;
 } 
 

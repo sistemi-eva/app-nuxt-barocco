@@ -1,7 +1,7 @@
 <template>
 <div>
     <!-- <van-notice-bar v-if="!lettureZone" text="E' possibile comunicare la lettura ogni mese dal 20 a fine mese" left-icon="volume-o" /> -->
-    <van-notice-bar color="#1989fa" background="#41ca85" v-if="lettureZone" 
+    <van-notice-bar color="#1989fa" background="#63B32E" v-if="lettureZone" 
     text="Puoi comunicare la lettura del tuo contatore gas dal 20 a fine mese. Clicca sulla fornitura per procedere" 
     left-icon="volume-o" />
   <Page class="dashboard" style="margin:0px">
@@ -47,26 +47,26 @@ export default {
   }
   
   .van-nav-bar{
-    background-color:  #41ca85;
+    background-color:  #63B32E;
   }
   .van-popup.van-popup--right{
-    background:  #41ca85 !important;
+    background:  #63B32E !important;
   }
   .van-sidebar-item--select, .van-sidebar-item{
-    color: #41ca85;
+    color: #63B32E;
   }
   .van-sidebar-item--select::before{
-    background: #41ca85
+    background: #63B32E
   }
 
   .van-tab--active, .van-tab, .van-cell__value--alone, .textPrimary{
-    color: #41ca85 !important
+    color: #63B32E !important
   }
   .van-tabs__line, .van-radio__icon--checked .van-icon{
-    background-color: #41ca85;
+    background-color: #63B32E;
   }
   .van-radio__icon--checked .van-icon{
-    border-color: #41ca85;
+    border-color: #63B32E;
   }
   .van-notice-bar__content{
     color: #ffffff !important;

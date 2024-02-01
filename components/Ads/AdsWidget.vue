@@ -34,20 +34,16 @@ export default {
         {
           url_image: "/union_fattura.png",
           iframe_url:
-            "https://www.uniongaseluce.it/richiesta-attivazione-fatturazione-elettronica"
+            "https://baroccolucegas.it/fattura-digitale/ "
         },
 
         {
           url_image: "/union_business.png",
-          iframe_url: "https://www.uniongaseluce.it/aziende/"
-        },
-        {
-          url_image: "/union_energia.png",
-          iframe_url: "https://www.uniongaseluce.it/#offerte"
+          iframe_url: "https://baroccolucegas.it/offerte-business/"
         },
         {
           url_image: "/union_offerta.png",
-          iframe_url: "https://www.uniongaseluce.it/casa/"
+          iframe_url: "https://baroccolucegas.it/offerte-casa/"
         }
       ]
     };

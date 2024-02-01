@@ -1,9 +1,9 @@
 <template>
   <div>
-    <van-tabbar v-model="active" inactive-color="#FFF" style="background-color:#41ca85" >
+    <van-tabbar v-model="active" inactive-color="#FFF" style="background-color:#63B32E" >
       <van-tabbar-item name="index" replace @click="changePage({name:'index'})" icon="home-o">Home</van-tabbar-item>
-      <van-tabbar-item name="store"  replace  @click="changePage({name:'web',iframe_url:'https://www.uniongaseluce.it/sedi'})" icon="shop-collect-o">Sedi Union</van-tabbar-item>
-      <van-tabbar-item name="promozioni" replace  @click="changePage({name:'web',iframe_url:'https://www.unionworld.it'})" icon="discount">Promozioni</van-tabbar-item>
+      <van-tabbar-item name="store"  replace  @click="changePage({name:'web',iframe_url:'https://baroccolucegas.it/sedi/'})" icon="shop-collect-o">Sedi Barocco</van-tabbar-item>
+      <!--<van-tabbar-item name="promozioni" replace  @click="changePage({name:'web',iframe_url:'https://www.unionworld.it'})" icon="discount">Promozioni</van-tabbar-item>-->
     </van-tabbar>
   </div>
 </template>
