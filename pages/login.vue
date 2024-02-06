@@ -102,7 +102,7 @@
                   
                   <label for="codcli" style="color:#FFF;font-size:10pt; line-height:8px;" class="label">
                     Ho preso visione dell'
-                    <span @click.stop="changePage({name:'web',iframe_url:'https://www.uniongaseluce.it/page/privacy-policy'})" style="text-decoration: underline; "> 
+                    <span @click.stop="changePage({name:'web',iframe_url:'https://baroccolucegas.it/privacy-policy'})" style="text-decoration: underline; "> 
                       informativa
                     </span>
                     e autorizzo al trattamento dei miei dati ai sensi del Regolamento (UE) 2016/679

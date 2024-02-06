@@ -54,7 +54,7 @@
 <van-form @submit="updatePrivacy" class="mt-4 profilo">
 <van-cell class="cell title" title="Preferenze Privacy"></van-cell>
 <van-cell class="" >Presa visione dell'
-  <span @click.stop="changePage({name:'web',iframe_url:'https://www.uniongaseluce.it/page/privacy-policy'})" style="text-decoration: underline; "> 
+  <span @click.stop="changePage({name:'web',iframe_url:'https://baroccolucegas.it/privacy-policy'})" style="text-decoration: underline; "> 
     informativa
   </span>
    privacy ai sensi dell'art. 13 del Regolamento UE n. 2016/679 (GDPR)</van-cell>
@@ -62,7 +62,7 @@
     <van-radio :name="true" class="pb-2">presto il consenso</van-radio>
     <van-radio :name="false">nego il consenso</van-radio>
 </van-radio-group>
-<van-cell class="" >al trattamento dei miei dati per ricevere informazioni commerciali e offerte da Union Gas e Luce</van-cell>
+<van-cell class="" >al trattamento dei miei dati per ricevere informazioni commerciali e offerte da Barocco Luce e Gas</van-cell>
 
 
   <van-radio-group v-model="form.privacyCommercialeTerzi" class="ml-3 mt-4">
