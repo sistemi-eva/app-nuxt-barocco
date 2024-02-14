@@ -71,4 +71,10 @@ export default {
   .van-notice-bar__content{
     color: #ffffff !important;
   }
+  
+  .van-swipe__indicator{
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
 </style>

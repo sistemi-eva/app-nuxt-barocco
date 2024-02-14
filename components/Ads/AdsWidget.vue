@@ -50,6 +50,21 @@ export default {
   },
   mounted() {
     this.loading = false;
+	this.$nextTick(() => {
+      var my_indicators = document.querySelectorAll(".van-swipe__indicators i");
+      var myswipe = this.$refs['myswipe']
+      for (var i = 0 ; i < my_indicators.length; i++) {
+        
+        (function(i, myswipe){
+          my_indicators[i].onclick = function (e) {
+            myswipe.swipeTo(i)
+          }
+        })(i, myswipe );
+
+
+
+      }
+    });
   },
   methods: {
     changePage({ name, iframe_url }) {
