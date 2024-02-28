@@ -492,7 +492,7 @@ export default {
       }else{
         this.$axios({method: 'get', 
           url: `new-codice-cliente?codice_fiscale=${this.codice_fiscale}&codice_vecchio=${this.codice_cliente}&azienda=ugm`, 
-          baseURL: 'https://areaclientiback.evaenergyservice.it' 
+          baseURL: `${process.env.api_endpoint}` 
         })
         .then(res => {
           if(res.data.code_message == 'FOUND') {
@@ -519,7 +519,7 @@ export default {
     if(this.username && this.password) {
       this.$axios({method: 'post', 
         url: `/pre-login`, 
-        baseURL: 'https://areaclientiback.evaenergyservice.it' ,
+        baseURL: `${process.env.api_endpoint}`,
         data: {
           email: this.username,
           azienda: 'ugm',

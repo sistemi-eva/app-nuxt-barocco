@@ -85,8 +85,8 @@ data() {
     const stripe = await loadStripe(pkStripe.publicKey);
     this.$axios.$post('api/Payment/invoice-checkout', {
       InvoiceId: InvoiceId,
-      SuccessUrl: 'https://app.uniongaseluce.it/payments/success',
-      FailureUrl: 'https://app.uniongaseluce.it/payments/failure',
+      SuccessUrl: `${process.env.pay_success_url}`,
+      FailureUrl: `${process.env.pay_failure_url}`,
       PaymentType: 0
     })
     .then(function(session) {
@@ -128,7 +128,9 @@ data() {
       this.downloading = true
       this.$axios.$get('/api/authorization/auth-operation-token?operationType=downloadfattura&operationData='+id)
       .then(async (data)=>{
-        let url = 'https://areaclientiback.evaenergyservice.it/bolletta?url=https://areaclienti.uniongaseluce.it/ubik/api/fattura/pdf?permissionToken='+data.access_token+'&dettaglio=false'
+        let url = `${process.env.api_endpoint}/bolletta?url=${process.env.api_endpoint2}/api/fattura/pdf?permissionToken=${data.access_token}&dettaglio=false`
+        
+        
         this.downloading = false
         //return this.myBlob(url, "bolletta.pdf")
         
@@ -273,7 +275,7 @@ data() {
       this.downloading2 = true
       this.$axios.$get('/api/authorization/auth-operation-token?operationType=downloadfattura&operationData='+id)
       .then(async (data)=>{
-        let url = 'https://areaclientiback.evaenergyservice.it/bolletta_dett?url=https://areaclienti.uniongaseluce.it/ubik/api/fattura/pdf?permissionToken='+data.access_token
+        let url = `${process.env.api_endpoint}/bolletta_dett?url=${process.env.api_endpoint2}/api/fattura/pdf?permissionToken=${data.access_token}`
 
         this.downloading2 = false
         //return this.myBlob(url, "bolletta_dett.pdf")
