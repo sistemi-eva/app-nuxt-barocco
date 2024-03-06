@@ -66,7 +66,7 @@ data() {
   methods: {
 
     fatturaNotAvailable(data){
-      console.log(data + " " + moment(data).isBefore('01/01/2024'))
+
       return moment(data).isBefore('01/01/2024')
     },
 
