@@ -66,8 +66,24 @@ data() {
   methods: {
 
     fatturaNotAvailable(data){
+      
 
-      return moment(data).isBefore('01/02/2024')
+      var dataConfronto = new Date('2024-02-01');
+
+        // Definisci la data da confrontare nel formato italiano (giorno/mese/anno)
+        var dataDaConfrontare = data; // Cambia questa stringa con la data da confrontare
+
+        // Dividi la stringa della data in giorno, mese e anno
+        var partiData = dataDaConfrontare.split('/');
+        var giorno = parseInt(partiData[0]);
+        var mese = parseInt(partiData[1]) - 1; // Sottrai 1 dal mese poiché JavaScript conta i mesi da 0 a 11
+        var anno = parseInt(partiData[2]);
+
+        // Crea un oggetto data per la data da confrontare
+        var dataDaConfrontareFormatoJS = new Date(anno, mese, giorno);
+
+
+      return dataDaConfrontareFormatoJS < dataConfronto
     },
 
     myFattNonDisp(){
