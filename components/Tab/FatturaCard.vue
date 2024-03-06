@@ -67,7 +67,7 @@ data() {
 
     fatturaNotAvailable(data){
 
-      return moment(data).isBefore('01/01/2024')
+      return moment(data).isBefore('01/02/2024')
     },
 
     myFattNonDisp(){
