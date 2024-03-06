@@ -258,7 +258,7 @@
                 Se durante il login non ti viene chiesto di reimpostare la password, 
                 devi obbligatoriamente effettuare una nuova registrazione.<br>
                 Puoi reperire il tuo nuovo codice cliente sulla tua ultima fattura (Dopo il 31/12/20) oppure attraverso la voce "Problemi con il codice cliente?" nella sezione registrati.<br>
-                Se ancora non riesci ad accedere puoi contattare il Servizio Clienti al numero <a href="tel:800210760" style="color:blue; text-align: center; text-decoration:underline;">800.210.760</a> che ti potrà fornire ulteriore assistenza.<br>
+                Se ancora non riesci ad accedere puoi contattare il Servizio Clienti al numero <a href="tel:800171710" style="color:blue; text-align: center; text-decoration:underline;">800.17.17.10</a> che ti potrà fornire ulteriore assistenza.<br>
                 Ti ringraziamo della disponibilità e ci scusiamo per il disagio.
               </p>
             </template>
@@ -862,6 +862,7 @@ a {
 .foot-lnk {
   text-align: center;
 }
+
 </style>
 
 

@@ -276,7 +276,7 @@ export default {
     opacity: 1;
 }
 
-.van-icon-arrow, .van-notice-bar__content, .van-notice-bar__left-icon{
+.van-icon-arrow, .van-notice-bar__left-icon{
   color: #63B32E !important;
 }
 

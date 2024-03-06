@@ -16,12 +16,14 @@
         <h2 class="fattura-item textDefault" >{{fattura.importo | currency}} </h2>
         <h5 class="fattura-item" :style="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata' ? 'color:red': 'color:green'">{{fattura.statoPagamento}}</h5>
       <div class="fattura-item-right-bottom">
-        <van-button icon="paid" v-if="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata'" type="danger" round size="small" :loading="payment" @click="paga(fattura.idfattura)">Paga</van-button>  
+         
         
         <div v-if="fatturaNotAvailable(fatturaDel)">
-          <van-button icon="down" size="small" type="info" round @click="myFattNonDisp()" :loading="downloading" loading-type="spinner">Fattura non disp. </van-button>
+          <van-button icon="paid" v-if="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata'" type="danger" round size="small" :loading="payment" @click="paga(fattura.idfattura)">Paga</van-button>
+          <van-button size="small" type="info" round @click="myFattNonDisp()" :loading="downloading" loading-type="spinner">Fattura non disp. </van-button>
         </div>
         <div v-else>
+          <van-button icon="paid" v-if="fattura.pagamentoOnlineAbilitato == 1 && fattura.statoPagamento== 'Non Pagata'" type="danger" round size="small" :loading="payment" @click="paga(fattura.idfattura)">Paga</van-button>
           <van-button icon="down" size="small" type="info" round @click="downloadFattura(fattura.idfattura, fattura.numeroFattura)" :loading="downloading" loading-type="spinner">PDF </van-button>
           <van-button icon="down" size="small" type="info" round @click="downloadFatturaDETT(fattura.idfattura, fattura.numeroFattura)" :loading="downloading2" loading-type="spinner">DETT</van-button>
         </div> 
@@ -64,7 +66,8 @@ data() {
   methods: {
 
     fatturaNotAvailable(data){
-      return moment.utc(data).isAfter('01/02/2024')
+      console.log(data + " " + moment(data).isBefore('01/01/2024'))
+      return moment(data).isBefore('01/01/2024')
     },
 
     myFattNonDisp(){

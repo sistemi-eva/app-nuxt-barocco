@@ -2,6 +2,7 @@
   <div>
     <transition name="fade">
       <van-swipe
+        ref="myswipe"
         v-if="!loading"
         autoplay="4000"
         class="sites-swipe  mt-3"
