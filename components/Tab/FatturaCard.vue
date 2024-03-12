@@ -125,8 +125,8 @@ data() {
     const stripe = await loadStripe(pkStripe.publicKey);
     this.$axios.$post('api/Payment/invoice-checkout', {
       InvoiceId: InvoiceId,
-      SuccessUrl: `${process.env.pay_success_url}`,
-      FailureUrl: `${process.env.pay_failure_url}`,
+      SuccessUrl: window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/payments/success",
+      FailureUrl: window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/payments/failure",
       PaymentType: 0
     })
     .then(function(session) {
