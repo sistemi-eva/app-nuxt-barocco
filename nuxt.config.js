@@ -80,7 +80,7 @@ export default {
     { src: '~/plugins/vue-apexcharts', ssr:false},
   ],
   axios: {
-    baseURL: 'https://areaclienti.uniongaseluce.it/ubik/'
+    baseURL: 'https://areaclienti.uniongasmetano.it/ubik/'
    // proxyHeaders: true
   },
   pwa: {
