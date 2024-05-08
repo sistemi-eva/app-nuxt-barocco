@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "a7d19e11-6786-479e-92a6-11220523c799"
+      }
+    },
+    "android": {
+      "package": "com.eva_energy_service.baroccoapp"
+    }
+  }
+}

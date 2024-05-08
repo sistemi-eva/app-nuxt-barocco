@@ -2,9 +2,7 @@ export default {
 
   env: {
     api_endpoint: 'https://areaclientiback.evaenergyservice.it',
-    api_endpoint2: 'https://areaclienti.uniongaseluce.it/ubik',
-   // pay_success_url: 'https://app.baroccolucegas.it/payments/success',
-    //pay_failure_url: 'https://app.baroccolucegas.it/payments/failure'
+    api_endpoint2: 'https://areaclienti.uniongasmetano.it/ubik'
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
