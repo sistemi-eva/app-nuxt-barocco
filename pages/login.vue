@@ -542,6 +542,7 @@ export default {
         .then(res => {
           res.data.fingerprint = fingerprint;
           this.loadingLogin = false
+          console.log(this.$store)
           this.$store.commit("login", res.data);
           this.$cookies.set("bitmask", "257");
           this.$axios.$get("api/user/info").then(user => {
@@ -552,6 +553,7 @@ export default {
           });
         })
         .catch(e => {
+          console.log(e.message)
           this.loadingLogin = false
           this.errors = e.response.data.errors;
           if(this.errors.credential && (this.errors.credential.PasswordExpired || this.errors.credential.passwordExpired)) {

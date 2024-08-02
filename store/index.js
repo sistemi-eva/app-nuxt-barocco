@@ -156,7 +156,7 @@ export const state = () => ({
   refresh_token: null,
   authenticated: false,
   utente: {},
-  id_anagrafica: null
+  id_anagrafica: null,
 })
 
 
