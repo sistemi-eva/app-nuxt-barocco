@@ -2,7 +2,7 @@
 <div>
     <!-- <van-notice-bar v-if="!lettureZone" text="E' possibile comunicare la lettura ogni mese dal 20 a fine mese" left-icon="volume-o" /> -->
     <van-notice-bar color="#1989fa" background="#63B32E" v-if="lettureZone" 
-    text="Puoi comunicare la lettura del tuo contatore gas dal 20 a fine mese. Clicca sulla fornitura per procedere" 
+    text="Puoi comunicare la lettura del tuo contatore gas dal 23 a fine mese. Clicca sulla fornitura per procedere" 
     left-icon="volume-o" />
   <Page class="dashboard" style="margin:0px">
     <SediWidget />
