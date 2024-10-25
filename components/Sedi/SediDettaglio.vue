@@ -124,6 +124,7 @@ export default {
           var idRigaContratto = null;
           if(data[0].data.contratti[0].idrigaContratto) {
             for(var i in data[0].data.contratti){
+              console.log("cont", data[0].data.contratti)
               if(data[0].data.contratti[i].canInsertLettura === true){
                 idRigaContratto = data[0].data.contratti[i].idrigaContratto
               }
